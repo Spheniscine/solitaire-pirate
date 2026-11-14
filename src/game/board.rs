@@ -66,6 +66,10 @@ impl DepotRole {
     pub fn id(self, i: usize) -> usize {
         self.offset() + i
     }
+
+    pub fn is_face_up(self) -> bool {
+        self != DepotRole::MonsterHome
+    }
 }
 
 #[derive(Copy, Clone, Serialize_tuple, Deserialize_tuple, Debug, PartialEq, Eq)]
