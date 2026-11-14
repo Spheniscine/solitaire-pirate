@@ -132,10 +132,9 @@ impl Board {
         res
     }
 
-    pub fn do_move(&mut self, pos1: BoardPos, pos2: BoardPos, rev: bool) {
+    pub fn do_move(&mut self, pos1: BoardPos, pos2: BoardPos) {
         self.selected = None;
         let mut cards = self.depots[pos1.depot_index].drain(pos1.card_index ..).collect::<Vec<_>>();
-        if rev { cards.reverse(); }
         self.animation_acts.push(
             AnimationAct::Move { 
                 cards, pos1, pos2
@@ -159,5 +158,9 @@ impl Board {
 
     pub fn last_pos(&self, depot: usize) -> BoardPos {
         BoardPos::new(depot, self.depots[depot].len().wrapping_sub(1))
+    }
+
+    pub fn get(&self, pos: BoardPos) -> Option<Card> {
+        self.depots.get(pos.depot_index)?.get(pos.card_index).copied()
     }
 }

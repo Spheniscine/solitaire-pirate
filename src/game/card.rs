@@ -94,6 +94,14 @@ impl Card {
             Some(Card::Number { rank, suit })
         }
     }
+
+    pub fn is_monster(self) -> bool {
+        matches!(self, Card::Monster { .. })
+    }
+
+    pub fn is_pirate(self) -> bool {
+        matches!(self, Card::Pirate { .. })
+    }
 }
 
 
