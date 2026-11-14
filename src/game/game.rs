@@ -5,7 +5,7 @@ use rand::{Rng, seq::SliceRandom};
 use serde::{Deserialize, Serialize};
 use strum::{EnumCount, IntoEnumIterator};
 
-use crate::game::{Board, BoardPos, Card, DECK_SIZE, DepotRole, NUM_MONSTERS, NUM_PIRATES, NUM_RANKS, RANKS, Skin, Suit};
+use crate::{components::LocalStorage, game::{Board, BoardPos, Card, DECK_SIZE, DepotRole, NUM_MONSTERS, NUM_PIRATES, NUM_RANKS, RANKS, Skin, Suit}};
 
 use super::Selection;
 
@@ -89,7 +89,7 @@ impl GameState {
         self.history.clear();
         self.undo_stack.clear();
         self.already_won = false;
-        // LocalStorage.save_game_state(&self);
+        LocalStorage.save_game_state(&self);
     }
 
     pub fn is_busy(&self) -> bool {
@@ -302,7 +302,7 @@ impl GameState {
             self.board.do_move(rec.pos2, rec.pos1);
             self.board.advance_actions(); // no animation, as repeated card moves on same card causes problems
         }
-        // LocalStorage.save_game_state(&self);
+        LocalStorage.save_game_state(&self);
     }
 
     pub fn restart(&mut self) {
@@ -310,7 +310,7 @@ impl GameState {
         self.board = Board::from_deal(&self.deal);
         self.history.clear();
         self.undo_stack.clear();
-        // LocalStorage.save_game_state(&self);
+        LocalStorage.save_game_state(&self);
     }
 
     /// returns an EnumMap where each suit gives the rank that is safe to sort
@@ -380,6 +380,6 @@ impl GameState {
             self.check_auto_moves();
         }
 
-        // if !self.is_busy() { LocalStorage.save_game_state(&self); }
+        if !self.is_busy() { LocalStorage.save_game_state(&self); }
     }
 }
