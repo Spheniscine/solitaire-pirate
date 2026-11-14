@@ -32,14 +32,15 @@ pub fn BoardComponent(
     let start_y = 2f32;
     let pos_y = |i: usize| start_y + (card_height + spacer_y) * i as f32;
     let column_card_offset = Vec2::new(0., card_height / 2.);
+    let first_row_delta = 0.5f32;
 
     let get_pos = |depot: usize, ord: usize| {
         let (role, index) = DepotRole::role_and_subindex(depot).unwrap();
         match role {
             DepotRole::FreeCell | DepotRole::MonsterHome => 
-                Vec2::new(pos_x(index), pos_y(0)),
+                Vec2::new(pos_x(index) - first_row_delta, pos_y(0)),
             DepotRole::NumberHome => 
-                Vec2::new(pos_x(3 + index), pos_y(0)),
+                Vec2::new(pos_x(3 + index) + first_row_delta, pos_y(0)),
             DepotRole::Tableau => 
                 Vec2::new(pos_x(index), pos_y(1)) + column_card_offset * ord as f32,
         }
@@ -123,11 +124,24 @@ pub fn BoardComponent(
         "selected-halo-prompt"
     } else {"selected-halo"};
 
+    let divider_x = 50f32 - 0.25;
+
     rsx! {
         div {
             position: "absolute",
             top: rem(position.y),
             left: rem(position.x),
+
+            // Divider
+            div {
+                position: "absolute",
+                top: rem(start_y),
+                left: rem(divider_x),
+                width: rem(0.5),
+                border_radius: rem(0.25),
+                height: rem(card_height),
+                background_color: "#aaa",
+            }
 
             for depot in 0..NUM_DEPOTS {
                 if let Some(hint) = get_hint(depot) {
