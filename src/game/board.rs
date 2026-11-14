@@ -138,7 +138,7 @@ impl Board {
 
     pub fn do_move(&mut self, pos1: BoardPos, pos2: BoardPos) {
         self.selected = None;
-        let mut cards = self.depots[pos1.depot_index].drain(pos1.card_index ..).collect::<Vec<_>>();
+        let cards = self.depots[pos1.depot_index].drain(pos1.card_index ..).collect::<Vec<_>>();
         self.animation_acts.push(
             AnimationAct::Move { 
                 cards, pos1, pos2
