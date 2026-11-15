@@ -87,8 +87,7 @@ pub fn CardComponent<C: PartialEq + Clone + 'static, S: SkinTrait<C> + 'static>(
                     onclick, ondoubleclick,
 
                     div {
-                        // class: "card-pattern-1",
-                        background_color: "#292f33",
+                        class: "card-pattern-1",
                         position: "relative",
                         width: pt(BASE_CARD_WIDTH - 1.25),
                         height: pt(BASE_CARD_HEIGHT - 1.25),
