@@ -1,14 +1,13 @@
 use dioxus::prelude::*;
 
-use crate::components::Hero;
+use crate::{components::Hero, game::RANK_FONT_STR};
 
 mod game;
 mod components;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 
-// altered version of KaTeX_Main to include filled "red" suits
-const KATEX_SUITS: Asset = asset!("/assets/KaTeX_Suits.woff2");
+const RANK_FONT: Asset = asset!("/assets/TexgyrechorusMediumitalic-XJ2Z.woff2");
 
 // from https://www.confettijs.org/
 const CONFETTI_JS: Asset = asset!("/assets/confetti.min.js");
@@ -49,10 +48,10 @@ fn App() -> Element {
         document::Style {
             r#"
             @font-face {{
-                font-family: KaTeX_Suits;
+                font-family: {RANK_FONT_STR};
                 font-style: normal;
                 font-weight: 700;
-                src: url({KATEX_SUITS}) format("woff2");
+                src: url({RANK_FONT}) format("woff2");
             }} 
             "#,
         }

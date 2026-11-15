@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::{components::{Emoji, SkinTrait}, game::{Card, ColorMode, KATEX_SUITS_FONT_STR, Skin}};
+use crate::{components::{Emoji, SkinTrait}, game::{Card, ColorMode, RANK_FONT_STR, Skin}};
 
 impl SkinTrait<Card> for Skin {
     fn get_color(&self, card: &Card, mode: ColorMode) -> String {
@@ -10,7 +10,8 @@ impl SkinTrait<Card> for Skin {
     fn render_rank(&self, card: &Card) -> Element {
         rsx! {
             span {
-                font_family: KATEX_SUITS_FONT_STR,
+                font_family: RANK_FONT_STR,
+                font_size: "1.2em",
                 {self.rank_text(*card)}
             }
         }
