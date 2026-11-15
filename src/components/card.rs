@@ -16,6 +16,8 @@ pub const CARD_HEIGHT_RATIO: f32 = BASE_CARD_HEIGHT / BASE_CARD_WIDTH;
 pub const CARD_BORDER_RADIUS_RATIO: f32 = 1. / BASE_CARD_WIDTH;
 pub const CARD_FONT_RATIO: f32 = 5. / 12.;
 
+pub const CARD_BACKGROUND_COLOR: &str = "#ffd";
+
 #[component]
 pub fn CardComponent<C: PartialEq + Clone + 'static, S: SkinTrait<C> + 'static>(
     position: Vec2,
@@ -44,7 +46,7 @@ pub fn CardComponent<C: PartialEq + Clone + 'static, S: SkinTrait<C> + 'static>(
                 position: "absolute",
                 top: rem(position.y),
                 left: rem(position.x),
-                background_color: color_mode.choose("#fff", "#101"),
+                background_color: color_mode.choose(CARD_BACKGROUND_COLOR, "#101"),
                 width: pt(BASE_CARD_WIDTH - 1.),
                 height: pt(BASE_CARD_HEIGHT - 1.),
                 border: "{pt(0.25)} solid",
@@ -75,7 +77,7 @@ pub fn CardComponent<C: PartialEq + Clone + 'static, S: SkinTrait<C> + 'static>(
                     position: "absolute",
                     top: rem(position.y),
                     left: rem(position.x),
-                    background_color: "#fff",
+                    background_color: CARD_BACKGROUND_COLOR,
                     width: pt(BASE_CARD_WIDTH - 1.),
                     height: pt(BASE_CARD_HEIGHT - 1.),
                     border: "{pt(0.25)} solid #000",
