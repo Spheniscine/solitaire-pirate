@@ -9,6 +9,7 @@ pub static EMOJI_MAP: phf::Map<&'static str, Asset> = phf_map! {
     "🐋" => asset!("/assets/emoji/emoji_u1f40b.svg"),
     "🦈" => asset!("/assets/emoji/emoji_u1f988.svg"),
     "😀🏴‍☠️" => asset!("/assets/emoji/moremoji_pirate.svg"),
+    "🏴‍☠️" => asset!("/assets/emoji/pirate-flag.svg")
 };
 
 #[component]
