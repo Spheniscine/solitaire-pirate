@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use glam::Vec2;
 
-use crate::{components::rem, game::ColorMode};
+use crate::{components::{Emoji, rem}, game::ColorMode};
 
 pub trait SkinTrait<C>: PartialEq + Clone {
     fn get_color(&self, card: &C, mode: ColorMode) -> String;
@@ -87,7 +87,8 @@ pub fn CardComponent<C: PartialEq + Clone + 'static, S: SkinTrait<C> + 'static>(
                     onclick, ondoubleclick,
 
                     div {
-                        class: "card-pattern-1",
+                        // class: "card-pattern-1",
+                        background_color: "#292f33",
                         position: "relative",
                         width: pt(BASE_CARD_WIDTH - 1.25),
                         height: pt(BASE_CARD_HEIGHT - 1.25),
@@ -95,6 +96,11 @@ pub fn CardComponent<C: PartialEq + Clone + 'static, S: SkinTrait<C> + 'static>(
                         display: "flex",
                         justify_content: "center",
                         align_items: "center",
+                        font_size: pt(10.),
+
+                        Emoji {
+                            text: "🏴‍☠️"
+                        }
 
                         // if let Some(number_hint) = number_hint {
                         //     div {
