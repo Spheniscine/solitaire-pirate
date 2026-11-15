@@ -11,7 +11,6 @@ impl SkinTrait<Card> for Skin {
         rsx! {
             span {
                 font_family: RANK_FONT_STR,
-                font_size: "1.2em",
                 {self.rank_text(*card)}
             }
         }

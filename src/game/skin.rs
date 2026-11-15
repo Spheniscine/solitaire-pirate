@@ -34,7 +34,7 @@ impl ColorMode {
 pub struct Skin;
 
 pub const SYMBOLS_2_FONT_STR: &str = "'Noto Sans Symbols 2'";
-pub const RANK_FONT_STR: &str = "TeXGyreChorus";
+pub const RANK_FONT_STR: &str = "'Pieces of Eight'";
 
 const COLOR_AMBER: [&str; 2] = ["#b70", "#ffb433"];
 const COLOR_GREEN: [&str; 2] = ["#062", "#00ff55"];

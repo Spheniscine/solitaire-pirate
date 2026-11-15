@@ -7,7 +7,7 @@ mod components;
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 
-const RANK_FONT: Asset = asset!("/assets/TexgyrechorusMediumitalic-XJ2Z.woff2");
+const RANK_FONT: Asset = asset!("/assets/Pieces_of_Eight.woff2");
 
 // from https://www.confettijs.org/
 const CONFETTI_JS: Asset = asset!("/assets/confetti.min.js");
