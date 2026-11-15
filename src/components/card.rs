@@ -91,7 +91,7 @@ pub fn CardComponent<C: PartialEq + Clone + 'static, S: SkinTrait<C> + 'static>(
                         position: "relative",
                         width: pt(BASE_CARD_WIDTH - 1.25),
                         height: pt(BASE_CARD_HEIGHT - 1.25),
-                        border_radius: pt(1.),
+                        border_radius: pt(0.75),
                         display: "flex",
                         justify_content: "center",
                         align_items: "center",
