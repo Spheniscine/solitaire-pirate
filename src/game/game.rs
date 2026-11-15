@@ -253,6 +253,15 @@ impl GameState {
                     return;
                 }
             },
+            Card::Pirate { .. } => {
+                if let Some(d) = FreeCell.range().find(|&d| 
+                    self.board.depots[d].last().is_some_and(|c| c.is_monster())
+                ) {
+                    if self.try_sort_monster(BoardPos::new(d, 0), pos, None) {
+                        return;
+                    }
+                }
+            }
             _ => {}
         }
 
@@ -275,7 +284,7 @@ impl GameState {
             let Some(depot) = it.next() else {return false};
             if it.next().is_some() {
                 self.board.selected = Some(Selection::MonsterPrompt { monster_pos, pirate_pos: pirate_pos1 });
-                return false;
+                return true;
             }
             self.board.last_pos(depot)
         };
