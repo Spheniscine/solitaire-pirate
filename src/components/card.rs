@@ -13,7 +13,7 @@ pub trait SkinTrait<C>: PartialEq + Clone {
 pub const BASE_CARD_WIDTH: f32 = 12.;
 pub const BASE_CARD_HEIGHT: f32 = 13.;
 pub const CARD_HEIGHT_RATIO: f32 = BASE_CARD_HEIGHT / BASE_CARD_WIDTH;
-pub const CARD_BORDER_RADIUS_RATIO: f32 = 1. / BASE_CARD_WIDTH;
+pub const CARD_BORDER_RADIUS_RATIO: f32 = 1.5 / BASE_CARD_WIDTH;
 pub const CARD_FONT_RATIO: f32 = 5. / 12.;
 
 pub const CARD_BACKGROUND_COLOR: &str = "#ffd";
@@ -91,7 +91,7 @@ pub fn CardComponent<C: PartialEq + Clone + 'static, S: SkinTrait<C> + 'static>(
                         position: "relative",
                         width: pt(BASE_CARD_WIDTH - 1.25),
                         height: pt(BASE_CARD_HEIGHT - 1.25),
-                        border_radius: pt(0.5),
+                        border_radius: pt(1.),
                         display: "flex",
                         justify_content: "center",
                         align_items: "center",
