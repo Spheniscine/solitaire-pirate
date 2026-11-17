@@ -169,6 +169,9 @@ impl GameState {
                         return;
                     }
 
+                    if DepotRole::role(pos.depot_index) == Some(DepotRole::MonsterHome) {
+                        return;
+                    }
                     if pos != self.board.last_pos(pos.depot_index) {
                         return;
                     }
